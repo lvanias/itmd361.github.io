@@ -2,6 +2,7 @@ const alertMe = document.getElementById("entrybutton");
 const input = document.getElementById("entryinput");
 const output = document.getElementById("textoutput");
 var value;
+
 function init(){
   alertMe.addEventListener("click", function() {
     value = input.value;
@@ -11,3 +12,4 @@ function init(){
 }
 
 window.addEventListener('load', init);
+
