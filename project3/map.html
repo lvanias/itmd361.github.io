@@ -31,7 +31,6 @@
   <button id="expandButton">Change Map Size</button>
 </div>
 <script>
-  var markerCount = 0;
   function initMap() {
     var mapProp = {
       center:new google.maps.LatLng(51.508742,-0.120850),
@@ -40,28 +39,8 @@
   
     var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
   }
-  
-  function askQuestion() {
-    alert('If you have questions, contact me at:\nlvanias@hawk.illinoistech.edu');
-  };
-
-  function reloadMap() {
-    map = new google.maps.Map(document.getElementById("googleMap"), {
-      center: { lat: 51.508742, lng: -0.120850},
-      zoom: 5
-    });
-  }
-
-function expandMap() {
- document.getElementById("googleMap").classList.toggle("expanded");
-}
-
-  document.getElementById("questionButton").addEventListener("click", askQuestion);
-  document.getElementById("reloadButton").addEventListener("click", reloadMap);
-  document.getElementById("expandButton").addEventListener("click", expandMap);
 </script>
-
+<script src="script.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM1F-BpX660SBK3-Vw9O9f7AEvTAIH8rI&callback=initMap"></script>
-
 </body>
 </html>
