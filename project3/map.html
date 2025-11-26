@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/map.css">
+    <title>Lucien Vanias - Map</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Homepage</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="map.html">Map</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1 id="header">Lucien Vanias</h1>
+    <audio autoplay controls>
+      <source src="media/background_music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    <h2 id="miniHeader">Map</h2>
+<div id="googleMap"></div>
+<div id="questionBox">
+  <button id="reloadButton">Reload Map</button>
+  <button id="questionButton">Having Any Issues?</button>
+  <button id="expandButton">Change Map Size</button>
+</div>
+<script>
+  var markerCount = 0;
+  function initMap() {
+    var mapProp = {
+      center:new google.maps.LatLng(51.508742,-0.120850),
+      zoom:5,
+    };
+  
+    var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+  }
+  
+  function askQuestion() {
+    alert('If you have questions, contact me at:\nlvanias@hawk.illinoistech.edu');
+  };
+
+  function reloadMap() {
+    map = new google.maps.Map(document.getElementById("googleMap"), {
+      center: { lat: 51.508742, lng: -0.120850},
+      zoom: 5
+    });
+  }
+
+function expandMap() {
+ document.getElementById("googleMap").classList.toggle("expanded");
+}
+
+  document.getElementById("questionButton").addEventListener("click", askQuestion);
+  document.getElementById("reloadButton").addEventListener("click", reloadMap);
+  document.getElementById("expandButton").addEventListener("click", expandMap);
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM1F-BpX660SBK3-Vw9O9f7AEvTAIH8rI&callback=initMap"></script>
+
+</body>
+</html>
