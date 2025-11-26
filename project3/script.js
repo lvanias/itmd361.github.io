@@ -13,6 +13,6 @@ function expandMap() {
  document.getElementById("googleMap").classList.toggle("expanded");
 }
 
-  document.getElementById("questionButton").addEventListener("click", askQuestion);
-  document.getElementById("reloadButton").addEventListener("click", reloadMap);
-  document.getElementById("expandButton").addEventListener("click", expandMap);
+document.getElementById("questionButton").addEventListener("click", askQuestion);
+document.getElementById("reloadButton").addEventListener("click", reloadMap);
+document.getElementById("expandButton").addEventListener("click", expandMap);
