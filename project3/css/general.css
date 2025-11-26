@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=BBH+Sans+Bogle&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+@font-face {
+  font-family: "headFont";
+  src: url("../fonts/RaglanPunch.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body{
+  margin: 0;
+  overflow-x: hidden;
+  font-family: sans-serif;
+}
+
+#header {
+  font-family:headFont, sans-serif;
+  background-color:#333;
+  margin:0;
+  padding:0;
+  padding-bottom: 1.5vw;
+	padding-top: calc(1.5vw + 42px);
+  font-size: clamp(30px, 4vw, 50px);
+  text-indent: 20px;
+  color:#f8f8f8;
+  background-image: url(../media/halftone.png);
+  background-repeat: repeat-x;
+  background-position-y: 52px;
+  background-size: 170px;
+}
+
+#miniHeader {
+	font-size: 1.6rem;
+  margin-top:0;
+  margin-left: 8px;
+  width:fit-content;
+  margin:10px;
+  border-bottom: 3px solid black;
+  font-size: 1.6rem;
+  font-family: "DM Serif Display", serif;
+}
+
+.tertiaryHeader {
+  font-family: "DM Serif Display", serif;
+  font-weight: 500;
+  font-size: 1.8rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+p {padding-left: 8px;}
+
+audio {
+  float:right;
+  padding-top: 5px;
+}
+
+nav {
+  --fullWidth:100vw;
+  width:var(--fullWidth);
+  background-color:#333;
+  position:fixed;
+  z-index: 4;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width:100%;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  font-family: "BBH Sans Bogle", sans-serif;
+  color: gainsboro; 
+  padding: 10px calc(var(--fullWidth) / 13);
+  display: block;
+  text-decoration: none;
+  font-size:18px;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color:gainsboro; color:#333;
+}
+
+audio {
+  width:150px;
+  height:30px;
+  padding-right:10px;
+}
+
+@media (min-width: 701px) {
+  nav ul li a{
+    font-size:30px;
+  }
+  audio {
+    width:300px;
+    height:54px;
+  }
+  #header {
+		padding-top: calc(1.5vw + 56px);
+		background-position-y: 66px;
+  }
+  #miniHeader{
+    font-size: 2.5rem;
+    margin-top:0;
+  }
+}
