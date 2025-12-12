@@ -1,0 +1,805 @@
+:: StoryTitle
+Gwjemkan
+
+
+:: StoryData
+{
+  "ifid": "F81D26AC-2785-40EE-82BA-05DF4F4498A3",
+  "format": "Chapbook",
+  "format-version": "2.3.0",
+  "start": "Gwjemkan",
+  "zoom": 0.6
+}
+
+
+:: \ Camp1 {"position":"1525,25","size":"100,100"}
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+<p>
+[if satisfaction]
+You return to your campsite satisfied, finish setting up, and [[go straight to sleep.|D3]]</p>
+[else]
+You return to your campsite dissatisfied, finish setting up, and [[go straight to sleep.|D3]].</p>
+
+
+
+:: \ D3 {"position":"2300,300","size":"100,100"}
+
+
+
+:: \ Departure {"position":"650,400","size":"100,100"}
+day: "Week 1"
+$weapons:2
+$food:3
+$tools: 2
+$valuables:0
+$money:10
+--
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr>
+</table></div>
+</h1>
+<p>
+Dawn has arrived.<br>You and your group finish getting ready and [[set off on your expedition|Day 1]].
+</p>
+
+
+:: \ Following {"position":"1275,125","size":"100,100"}
+satisfaction: false
+--
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+That took much longer than you were expecting. The sun has fully gone down, and you have lost your bearings. Nadmagekwe is still confident, though. “That way.” She points towards a thick woods even further out from the river. “I’ve been through these parts before.”
+[[Turn back| Camp1]] [[Press onwards| Press On]]
+
+
+:: \ Fork In the Waterway {"position":"900,400","size":"100,100"}
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr>
+</table></div>
+</h1>
+<p style="margin-top:10px;">There's a split in the waterway up ahead,, leading to two different paths.</p>
+<h5 style="margin-top:0;"><div class="dialogueName2">FRANCOIS:</div>
+"Looks like there's a fork in the river up ahead."
+<div class="dialogueName2">JOHN:</div>
+"Go to the right."
+<div class="dialogueName2">FRANCOIS (LOOKING AT MAP):</div>
+"I'm not sure if we should. The left path seems far safer, and easier to get through."
+<div class="dialogueName2">JOHN (irritated):</div>
+"There's a village down the right passage. If we go to the right, the sooner we can trade."
+</h5>
+<p>The choice is up to you. Will you take the [[Left Path |Event E2]] or the [[Right Path |Event E1]]?</p>
+
+
+:: \ Investigate {"position":"1500,275","size":"100,100"}
+satisfaction: false
+--
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+You scour the area for anything else that could be of use, but found absolutely nothing and just wasted your time. 
+[[Go back to camp| Camp1]].
+
+
+:: \ Name Entry {"position":"150,325","size":"100,100"}
+day: "Preparation"
+--
+<h2>Before we start, enter your name.</h2>
+
+<div id="nameEntry">{text input for: 'name'}</div>
+
+[[Continue|Introduction]]
+
+
+:: \ Press On {"position":"1300,250","size":"100,100"}
+$weapons: $weapons + 2
+satisfaction: true
+--
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+Trusting in her, you enter the woods. The trees totally block the light of the moon. 
+<h4>
+<div class="dialogueName">John:</div>
+“You’ve led us to our deaths! We’ll never find our way out of here!”</h4>
+Without much other choice, however, he continues to follow Nadmagekwe, who offers no consolation but still presses onwards with certainty. Right as you are about to lose hope, you find an abandoned campsite. Evidently, some hunters had evacuated in a hurry and left some ammunition lying around. 
+<p style="color:LimeGreen;font-size:13px;">*+2 ammo</p>
+[[Go back to camp| Camp1]]<br>[[Search further| Investigate]]
+
+
+:: \ Rest Area {"position":"1150,0","size":"100,100"}
+satisfaction: true 
+--
+
+[JavaScript]
+[if $tools == 1]
+$food: $food - 2
+[continue]
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+<p>While you are stopping to make camp for the night, you notice a hill right on the other side of the riverbank from your camp. As it stands out as the highest point in the area. You aren’t quite sure what you would look for, but Nadmagekwe indicates that something may be out there.</p>
+<p style="color:crimson; font-size:13px;">*-2 food</p>
+<p>[[Follow her| Following]]<br>[[Insist she stays back | Camp1]]</p>
+
+
+:: \ Visit {"position":"1925,625","size":"100,100"}
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+Entering the village, the chief comes out to greet you. He engages in a short and slightly heated conversation with Nadmagekwe, who then turns to you to explain.
+<h5><div class="dialogueName2">Nadmagekwe:</div>
+“This village was recently the target of some dishonest traders, and he will not allow that to happen again.”</h5>
+This news puts the whole group on edge.
+<h5><div class="dialogueName2">Nadmagekwe:</div>
+ “However, I’m sure that if you offered something to him as a gift that he would welcome you in. We might even be able to find someone to trade with.”</h5>
+<p>[[Offer something|Offer]]<br>[[Decline to give a gift and return to your travels|E4]]</p>
+
+
+:: *Continue eavesdropping* {"position":"1925,250","size":"100,100"}
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+
+<p>You hear Nadmagekwe laugh.</p>
+
+<h5 style="margin-top:0;"><div class="dialogueName2">Nadmagekwe:</div>
+“I wouldn’t worry about that. I’ll make sure that any conversations between us and them are cordial. If you’re still worried, I can tell you some stories of our people.”</h5>
+Francois agrees.
+<h5 style="margin-top:0;"><div class="dialogueName2">Nadmagekwe:</div>
+ “Our great people have lived on the shores of Mitchigami for quite some time ...”
+ </h5>
+<p>At this point, you lose the conversation. so you continue [[packing up|E3]] and preparing to continue the expedition.</p>
+
+
+:: CHANGELOG {"position":"75,200","size":"100,100"}
+VERSION 'FRAMEWORK 0.1'
+
+Changes:
+
+Added 
+
+Added Links for teammates 1-4 to return to Meet the Team
+
+Added text for Gear Up
+
+Added animation for ".gear-instructions".
+
+Ethan: Added Dailouge for Each Groupmate, Changed dialouge in "head inside", and changed First Groupmate to Francois.
+
+
+:: Credits {"position":"2725,675","size":"100,100"}
+<h1>Thanks for playing our game!</h1>
+
+
+:: D3 {"position":"1700,275","size":"100,100"}
+day: "Week 2"
+--
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+
+<p>A pretty uneventful week has passed. As you are packing up and getting back on the river, you overhear a conversation between Francois and Nadmagekwe.</p>
+
+<h5 style="margin-top:0;"><div class="dialogueName2">FRANCOIS:</div>
+“I’m nervous for the rest of the expedition, as we get deeper and deeper into Potawatomi territory...”</h5>
+
+<h5 style="margin-top:0;"><div class="dialogueName2">Nadmagekwe:</div>
+“Why’s that?”</h5>
+
+<h5 style="margin-top:0;"><div class="dialogueName2">FRANCOIS:</div>
+“It’s the first time I've been in this area, and I don’t want to cause any trouble.”</h5>
+<p>[[*Continue eavesdropping*]]</p>
+
+
+:: Day 1 {"position":"775,400","size":"100,100"}
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr>
+</table></div>
+</h1>
+
+For the first day of travel, your teammates are doing well. No conflicts so far.
+<p>[[What's that in the distance? | Fork In the Waterway]]</p>
+
+
+:: Disagreement {"position":"1275,825","size":"100,100"}
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+<h4>
+<div class="dialogueName">John (irritated):</div>
+“Artus, stop! Surely you’ve learned what happens when...”
+</div>
+</h4>
+John looks over to you, just now noticing your presence. Artus, shocked by the intrusion, seems to have calmed down slightly. He walks off back towards the river. Artus gives you back the gun.
+<h4>
+<div class="dialogueName">Artus:</div>
+“Right. Right...”
+</h4>
+</div>
+
+[[You get a signal from {one of the other people}|Hunt cont.]]
+
+
+:: E3 {"position":"1925,450","size":"100,100"}
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+You and your group finally spot a small Potawatomi settlement along the riverside.
+
+[[Visit| Visit]]<br>[[Pass by|E4]]
+
+
+:: E4 {"position":"2350,550","size":"100,100"}
+
+
+
+:: E5 {"position":"2625,425","size":"100,100"}
+
+
+
+:: Event E1 {"position":"900,200","size":"100,100"}
+[if random.d20 < 8]
+[JavaScript]
+$tools = 1;
+[continued]
+
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+
+[if $tools == 1]
+<h2 style="margin-bottom:10px;">CRASH</h2>
+<p>The boat hit a rock and was <span style="color:crimson;">damaged</span>.</p>
+<p>{tools} fixes it up, but you decide to not risk any more incidents and [[come to a stop to rest| Rest Area]].</p>
+<p style="color:crimson; font-size:13px;">*-1 Tool Durability</p>
+
+[else]
+<p>You make it safely through the canal and nodice a hillside you can rest at.</p>
+<p>[[You decide to stop rest and rest here| Rest Area]].</p>
+
+
+:: Event E2 {"position":"950,575","size":"100,100"}
+satisfaction: false
+--
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+
+<p>At about noon, your crew decide that they’ve had enough canoeing for now. Stepping off the canoes into a lush forest, you note an abundance of wildlife – a perfect spot for some [[hunting (requires ammunition)|Hunt]]!</p>
+
+
+:: Gear Up {"position":"525,300","size":"100,100"}
+weapons: "Francois"
+food: "Francois"
+valuables: "Francois"
+tools: "Francois"
+--
+<h1 class="dayDisplay">
+{day}</h1>
+<p>You walk into the mission building and find a selection of gear scattered on a table. As the captain, you must choose the roles of each person on the expedition, and what of your shared gear they manage.</p>
+Assign weapons to:
+<select onchange="(function(){weapons = this.value; if (weapons != food && weapons != valuables && weapons != tools && food != valuables && food != tools && valuables != tools) {document.getElementById('proceed').style.display = 'block';}else{document.getElementById('proceed').style.display = 'none';}}).call(this);">
+  <option value="Francois">Francois</option>
+  <option value="John">John</option>
+  <option value="Artus">Artus</option>
+</select>
+<br>
+Assign food to:
+<select onchange="(function(){food = this.value; if (weapons != food && weapons != valuables && weapons != tools && food != valuables && food != tools && valuables != tools) {document.getElementById('proceed').style.display = 'block';}else{document.getElementById('proceed').style.display = 'none';}}).call(this);">
+  <option value="Francois">Francois</option>
+  <option value="John">John</option>
+  <option value="Nadmagekwe">Nadmagekwe</option>
+  <option value="Artus">Artus</option>
+</select>
+<br>
+Assign tools to:
+<select onchange="(function(){tools = this.value; if (weapons != food && weapons != valuables && weapons != tools && food != valuables && food != tools && valuables != tools) {document.getElementById('proceed').style.display = 'block';}else{document.getElementById('proceed').style.display = 'none';}}).call(this);">
+  <option value="Francois">Francois</option>
+  <option value="John">John</option>
+  <option value="Nadmagekwe">Nadmagekwe</option>
+  <option value="Artus">Artus</option>
+</select><br>
+Assign valuables to:
+<select onchange="(function(){valuables = this.value; if (weapons != food && weapons != valuables && weapons != tools && food != valuables && food != tools && valuables != tools) {document.getElementById('proceed').style.display = 'block';}else{document.getElementById('proceed').style.display = 'none';}}).call(this);">
+  <option value="Francois">Francois</option>
+  <option value="John">John</option>
+  <option value="Nadmagekwe">Nadmagekwe</option>
+  <option value="Artus">Artus</option>
+</select>
+<p id="proceed" style="display:none;">[[Rest| Departure]]</p>
+
+
+:: Give {"position":"2275,775","size":"100,100"}
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+[JavaScript]
+switch (gift) {
+  case "Nothing":
+    write('<p>You offered nothing. The Chief gives you an unamused look, and returns to his village. [[Continue|Leave]]</p>');
+    break;
+  case "Food":
+  if ($food < 2){
+   write('<p>You offered your food, but you don't have any on you at the moment. The Chief gives you an unamused look, and returns to his village. [[Continue|Leave]]</p>');
+  }else{
+  write('<p>Your offering seems to reassure the chief that you mean no harm, and simply want to [[trade]].</p>');
+  }
+    break;
+  case "Ammo":
+     if ($weapons < 1){
+   write('<p>You offered your Ammo, but you don't have enough on you at the moment. The Chief gives you an unamused look, and returns to his village. [[Continue|Leave]]</p>');
+  }else{
+  write('<p>Your offering seems to reassure the chief that you mean no harm, and simply want to [[trade]].</p>');
+  }
+    break;
+  case "Weapons":
+   write('<p>You approach the chief with a weapon. Unfortunately for you, the chief clearly sees this as a threat. He turns back, calls out to the village, and some men of the village [[chase you out|Leave]].</p>');
+    break;
+  case "Valuables":
+  write('<p>You offered your valuables, but you don't have any on you at the moment.
+  The Chief gives you an unamused look, and returns to his village. [[Continue|Leave]]</p>');
+  break;
+  case "Money":
+   write('<p>You approach the chief with a gift of money. The chief laughs as you show him what you’ve brought, and returns to his village, not paying you any mind.[[Continue|Leave]]</p>');
+  break;
+  default:
+  break;
+}
+[continued]
+
+
+
+
+
+:: Gwjemkan {"position":"100,500","size":"100,100"}
+<h1 style="margin-bottom:10px;">Gwjemkan (Working Title)</h1>
+
+<img src="https://explorerspodcast.com/wp-content/uploads/2023/01/1599px-father_jacques_marquette_and_louis_joliet_discover_the_mississippi.jpeg?w=1024">
+
+<h3 style="text-align:center;">[[Click Here to Start | Name Entry]]</h3>
+
+<p class="gwjemkan-titlecredit">A Game by Team Navi</p> <p class="gwjemkan-titleversion">Build "10.27.25"'</p>
+
+<audio class="gwjemkan-tempaudio" autoplay>
+	<source src="https://vgmtreasurechest.com/soundtracks/jack-bros-virtual-boy/btbkpjln/01%20-%20Power%20On.mp3" type="audio/mp3">
+</audio>
+
+
+:: Hunt {"position":"1150,450","size":"100,100"}
+satisfaction: true
+_random: 0
+randomPerson: ""
+_failCheck: false
+_failText: "<p>You shoot at the deer, and barely miss. It pops its head up, spots you, and runs away.</p>"
+$weapons: $weapons - 1
+--
+[if random.d10 > 7]
+[JavaScript]
+_failCheck = true;
+var arr = ["John", "Francois", "Nadmagekwe"];
+
+var index = arr.indexOf(weapons);
+if (index !== -1) {
+  arr.splice(index, 1);
+}
+randomPerson = arr[Math.floor(Math.random() * arr.length)];
+[continue]
+[if weapons != "Artus" && _failCheck]
+[JavaScript]
+_failText += "<p>Artus notices, and quickly walks towards you.</p>";
+[continue]
+You see a deer in the distance, and attempt to shoot at it.
+<h2 style="margin-bottom:10px;">BOOM</h2>
+[if _failCheck]
+{_failText}
+<h4>
+<div class="dialogueName">Artus (irritated):</div>
+“Huh? How did you miss that? Do you not know how to use a musket? Give me that! I'll show you how to actually use this.”</h4>
+<p>[[Artus rips the gun out of your hands|Sus2]], and takes another shot, that obviously misses the now runaway deer.</p>
+<p>[[During this, you also notice {randomPerson} signaling to you to come over.|Hunt cont.]]</p>
+[else]
+<div id="visibilityHunt">
+You shoot the deer, and take it down. This deer will provide many meals for you all.
+[[You return to the group with your game meat|Regroup]].
+[JavaScript]
+_random = Math.random() < 0.5 ? 2 : 3;
+if (_random == 2){$food = $food + 2;}
+else{$food = $food + 3;}
+[continue]
+</div>
+
+[if _failCheck == false]
+<p style="color:LimeGreen; font-size:13px;">*+{_random} food</p>
+[continue]
+[append]
+<div style="scale(0.7)">
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr>
+</table></div>
+</h1>
+
+
+
+:: Hunt cont. {"position":"1325,600","size":"100,100"}
+satisfaction: false
+--
+You and {person in your group} split up. Heading over to {person}, you spot their mark: a turkey sitting still in a clearing. 
+
+[[Shoot (uses ammunition)|Shot]]<br>[[Give up|Regroup]]
+
+
+:: Introduction {"position":"300,275","size":"100,100"}
+<h1 class="dayDisplay">{day}</h1>
+<p>You — a 23-year-old French trader named {name}, arrive at the St. Ignace Mission, ready to set out on an expedition to Chicago.</p>
+<br>
+<p>After taking a look around, you decide to [[head inside]] the St. Ignace Mission.</p>
+
+
+:: Leave {"position":"2325,900","size":"100,100"}
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+
+<p>You leave empty-handed</p>
+
+
+:: Meet the Team {"position":"500,500","size":"100,100"}
+<h1 class="dayDisplay">{day}</h1>
+You walk up to your group, looking forward to meeting everyone.
+
+<div id="teammateContainer">
+	<div>[[Francois|francMeet]]</div>
+	<div>
+[if sus == 1]
+	[[{artusName}|Sus1]]
+[else]
+	[[{artusName}|artusMeet]]
+[continued]
+  	</div>
+	<div>[[{nadName}|nadMeet]]</div>
+	<div>[[{johnName}|johnMeet]]</div>
+</div>
+
+[if johnMet && artusMet && nadMet && francMet]
+[[Gear Up]]
+
+
+:: Offer {"position":"2100,725","size":"100,100"}
+gift: "Nothing"
+--
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+You decide to give the chief:
+<div>
+<select onchange="(function(){gift = this.value;}).call(this);">
+  <option value="Nothing">Nothing</option>
+  <option value="Money">Money</option>
+  <option value="Food">Food</option>
+  <option value="Valuables">Valuables</option>
+  <option value="Weapons">Weapons</option>
+  <option value="Ammo">Ammunition</option>
+</select></div><br>
+<p>[[Give the Gift|Give]]</p>
+
+
+:: Regroup {"position":"1500,575","size":"100,100"}
+$food: $food - 2
+--
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+[if satisfaction == true]
+You set up camp nearby, and everybody enjoys the fresh meat, a welcome break from the regular rations you have been eating for the past month. 
+[[Head to Sleep |D3]]
+[else]
+You set up camp, unhappy with your unsuccessful hunting attempt. Francois tries to comfort you “Maybe next time.” You are not entirely sure that there will be a next time.
+[[Head to Sleep |D3]]
+
+
+:: Shot {"position":"1450,725","size":"100,100"}
+satisfaction:true
+$food: $food + 2
+$weapons: $weapons - 1
+--
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+BOOM! You take another shot, and this time, you hit. The turkey is yours to eat 
+[[Regroup at the shore|Regroup]]
+
+
+:: Sus1 {"position":"325,775","size":"100,100"}
+artusMet: true
+artusName: "Artus"
+johnName: "John"
+sus: 1
+--
+<h1 class="dayDisplay">{day}</h1>
+<p>You catch him in the middle of a conversation with a Potawatomi woman, presumably also part of the group. The imposing man turns to face you as you approach. 
+<h4>
+<div class="dialogueName">Artus:</div>
+"So, You must be the captain then?"</h4>
+His stare uncomfortably burns into you. You can't shake the feeling. It's unpleasant. After an uncomfortable pause, he seems to finally have taken everything in. "Alright, I’ll be glad to serve ya. Name's Artus. If you need me to handle anything, let me know. I'll see ya at the boat" He returns to his conversation.
+<br>That unpleasant feeling still endures.</p>
+[[Go back. |Meet the Team]]
+
+
+:: Sus2 {"position":"1100,750","size":"100,100"}
+sus: sus + 1
+--
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+You shoot Artus a dirty look, but he is unfazed. Upset with your lack of marksmanship, he berates you further. 
+<h4>
+<div class="dialogueName">Artus (irritated):</div>
+“I thought you were supposed to be our leader? What kind of leader cannot do even the simplest of tasks!?” Artus stands up, towering over you.</h4>
+<p>Before any physical altercations can occur, [[John interjects|Disagreement]].</p>
+
+
+:: artusMeet {"position":"325,675","size":"100,100"}
+artusMet: true
+artusName: "Artus"
+--
+<h1 class="dayDisplay">{day}</h1>
+<p>You catch him in the middle of a conversation with a Potawatomi woman, presumably also part of the group. The imposing man turns to face you as you approach. 
+<h4>
+<div class="dialogueName">Artus:</div>
+"So, I take it you're the captain then?"</h4>
+[[His stare uncomfortably burns into you. You can't shake the feeling. It's unpleasant.|Sus1]] After an uncomfortable pause, he seems to finally have taken everything in. "Alright, I’ll be glad to serve ya. Name's <span class="highlight">Artus</span>. If you need me to handle anything, let me know. I'll see ya at the boat" He shuffles back to his previous conversation.
+
+[[Go back. |Meet the Team]]
+
+
+:: francMeet {"position":"450,675","size":"100,100"}
+francMet: true
+--
+<div>
+<h1 class="dayDisplay">{day}</h1>
+Francois needs little introduction to you: his enduring enthusiasm, roaring confidence, and smug demeanor. You've heard he is quite the ladies' man, but have yet to see any results.
+<h4>
+<div class="dialogueName">FRANCOIS:</div>
+“It's been a long time since I have seen that face!”</h4>
+You let out a small smile, feeling at home. 
+<h4 style="margin-bottom:0;">
+<div class="dialogueName">FRANCOIS:</div>
+"Well, luckily for the both of us, a more perfect group could not have gathered for our expedition. I encourage you to get to know everyone, but at the end of the day, you're the captain. Just give us the word, and we’ll be off."</h4>
+
+[if johnName == "Uptight Englishman" && johnMet]
+[[Ask him about the short man.|johnName Event 2]]
+[else]
+[[Go Back.|Meet the Team]]
+
+
+
+:: head inside {"position":"300,425","size":"100,100"}
+johnMet: false
+artusMet: false
+nadMet: false
+francMet: false
+nadName: "Native Woman"
+artusName: "Relaxed Missionary"
+johnName: "Uptight Englishman"
+sus: 0
+--
+<h1 class="dayDisplay">{day}</h1>
+After walking inside, you see 4 people.<br>
+You saw and recall the luxurious hair and feather on their head; your friend, Francois, that you met in France.
+<h3>
+<div class="dialogueName">FRANCOIS:</div>
+"{name}! Come meet everyone."</h3>
+[[You walk over to the group |Meet the Team]].
+
+
+:: johnMeet {"position":"650,675","size":"100,100"}
+johnMet: true
+--
+<h1 class="dayDisplay">{day}</h1>
+<p>You see an unfortunately short and stout man in the middle of the group. Assuming that he is part of your expedition group, you call him over to introduce yourself, but before you can do so, he gets up close to you.</p>
+<h4>
+<div class="dialogueName">{johnName}:</div>
+“Listen, I funded this expedition, and I expect us to turn a profit. Do you even understand me? <em>*Tch*</em>, Commoners. As you can plainly see, I was in a conversation before I was so rudely interrupted.”</h4>
+You didn’t get to speak, and you didn’t even catch <em>his name</em>. He shuffles back to the group without another word to you.
+
+[if francMet && johnName == "Uptight Englishman"]
+<p>[[Go back. |johnName Event 1]]</p>
+[else]
+<p>[[Go back. |Meet the Team]]</p>
+[continued]
+
+
+:: johnName Event 1 {"position":"650,775","size":"100,100"}
+johnName: "John"
+--
+<h1 class="dayDisplay">{day}</h1>
+As you're walking back, Francois walks over to you.
+<h4>
+<div class="dialogueName">FRANCOIS (pointing at the short man):</div>
+“You just met <span class="highlight">John</span>, right?"</h4>
+You nod.
+<h4>
+<div class="dialogueName">FRANCOIS:</div>
+"He's got a pretty <em>short</em> temper doesn't he? I jest, but I'd be careful around him. He funded this whole expedition, so I really wouldn't want to get on his bad side."</h4>
+<p>[[Go back. |Meet the Team]]</p>
+
+
+:: johnName Event 2 {"position":"450,775","size":"100,100"}
+johnName: "John"
+--
+<h1 class="dayDisplay">{day}</h1>
+<h4>
+<div class="dialogueName">FRANCOIS (thinking):</div>
+“Short man?"</h4>
+<h4>
+<div class="dialogueName">FRANCOIS (pointing at the short man):</div>
+“Oh, you must mean <span class="highlight">John</span>, right?</h4>
+You nod.
+<h4>
+<div class="dialogueName">FRANCOIS:</div>
+"He's got a pretty <em>short</em> temper doesn't he? I jest, but I'd be careful around him. He funded this whole expedition, so I really wouldn't want to get on his bad side."</h4>
+<p>[[Go back. |Meet the Team]]</p>
+
+
+:: nadMeet {"position":"550,725","size":"100,100"}
+nadName: "Nadmagekwe"
+nadMet: true
+--
+<h1 class="dayDisplay">{day}</h1>
+<p>The room seemed to calm as you head in the direction of a young lady. Judging by her looks, she must be some sort of translator or interpreter.
+<h4>
+<div class="dialogueName">Nadmagekwe:</div>
+"Hello Sir, My name is <span class="highlight">Nadmagekwe</span>."</h4>
+You were never good with names, and this one will certainly be no exception.
+<h4>
+<div class="dialogueName">Nadmagekwe:</div>
+"I look forward to our journey together."</h4>
+Her expression gives off a feeling of tranquility, and you can see it's effects on the rest of the group as she turns back, returning swiftly to the group. She had barely spoken a word, but you get the feeling that she knows more than she’s letting on.</p>
+
+[[Go back. |Meet the Team]]
+
+
+:: trade {"position":"2525,825","size":"100,100"}
+$valuables: 1
+--
+<h1 class="dayDisplay">{day}<table class="invDetails">
+<tr><th>Food: {$food}</th><th>Bullets: {$weapons}</th><th>Valuables: {$valuables}</th><th>Tools: {$tools} Durability</th><th>Money: {$money} Silver</th></tr>
+<tr><td>{food}</td><td>{weapons}</td><td>{valuables}</td><td>{tools}</td><td></td></tr></table></div></h1>
+[JavaScript]
+switch (gift) {
+case "Food":
+$food -= 2;
+case "Ammo":
+$weapons -= 1;
+write('<p></p>');
+default:
+break;
+}
+[continued]
+
+
+
+:: StoryStylesheet [stylesheet]
+@import url('//fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap');
+
+@import url('//fonts.googleapis.com/css2?family=IM+Fell+French+Canon:ital@0;1&family=Tangerine:wght@400;700&display=swap');
+
+/*FOR BODY TEXT*/
+body, tw-passage {
+  font-family: "IM Fell French Canon", serif;
+  font-weight:400;
+  margin:0;
+  padding:0;
+  font-style:normal;
+}
+
+p {
+  font-family: "IM Fell French Canon", serif;
+  font-weight:400;
+  margin:0;
+  padding:0;
+  font-style:normal;
+}
+
+/*FOR TITLE*/
+h1 {
+  font-family: 'Tangerine', sans-serif;
+  font-style:normal;
+  margin:0;
+  padding:0; 
+  text-align:center;
+}
+
+/*=====================FOR GWJEMKAN TITLE SCREEN==================*/
+
+.gwjemkan-titlecredit{
+  text-align:left;
+}
+
+.gwjemkan-titleversion{
+text-align:left;
+}
+
+/*==========================FOR INTRODUCTION======================*/
+
+/*===NAME ENTRY===*/
+#nameEntry{
+  margin-top:15px;
+  margin-bottom:15px;
+}
+#nameEntry *{
+  height:50px;
+  font-size:36px;
+}
+
+/*=========================FOR MEET THE TEAM======================*/
+
+#teammateContainer{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  font-size:20px;
+  column-gap:20px;
+  border:3px solid white;
+  padding:10px;
+  border-radius:2px;
+}
+
+
+/*===========================FOR GEAR UP==========================*/
+
+
+/*=========================================================*/
+
+.dialogueName {
+  font-size:16px;
+  text-decoration: underline;
+  text-transform: uppercase;
+  padding:0;
+  margin:0;
+  transform:translateY(8px);
+}
+.dialogueName2 {
+  font-size:13px;
+  text-decoration: underline;
+  text-transform: uppercase;
+  padding:0;
+  margin:0;
+  transform:translateY(8px);
+}
+
+h3{margin-top:10px;}
+
+.highlight{text-decoration:underline;}
+
+.dayDisplay{
+  position:absolute;
+  top:30px;
+  left:20px;
+  font-size:50px;
+  width:800px;
+  text-align:left;
+  display:flex;
+}
+
+.invDetails{
+  font-size:15px;
+  margin-left:20px;
+  transform: translate(-5px, -20px);
+  font-family: "IM Fell French Canon", serif;
+  position:relative;
+}
+
+.invDetails td, .invDetails th{
+  text-align:left;
+  width:130px;
+}
+.invDetails td{transform: translateY(-15px); font-size:13px;}
+.invDetails th{font-weight:normal;}
